@@ -36,7 +36,7 @@
 			}
 			.submit{
 				height: 50px;
-				width: 100px;
+				width: 150px;
 			}
 			.main{
 				position: relative;
@@ -46,6 +46,7 @@
 				right:5px;
 				width: 100%;
 				height: 1000px;
+				top:201px;
 			}
 			
 			
@@ -54,30 +55,29 @@
 </head>
 
 <body>
+	<?php
+    session_start();
+    session_unset();
+    if(session_destroy()) {
+      header("location: loginPage.php");
+    }
+  ?>
 	<div class="header">
 		<div class="title">
-		<a href="main.html" ><h1>WeSellArt.com</h1></a>
+		<a href="index.php" ><h1>WeSellArt.com</h1></a>
 		<h3>We here at WeSellArt.com are dedicated to selling you quality* art at unreasonable prices.</h3>
 		<h6>*We do not ensure the quality of any artwork.</h6>
 		</div>
 		<div class="useroptions">
 		
-		
-		<h3>Hello, $username</h3>
 
-		<input class="submit" type="submit" onclick="window.location.href = 'cartview.html'" value="Cart"></input>
-		
-		<input class="submit" type="submit" onclick="window.location.href='logout.html'" value="Logout"></input>
-		<br><br>
-		<input class="submit" type="submit" onclick="window.location.href='account.html'" value="View Account"></input>
-		
-		<input class="submit" type="submit" onclick="window.location.href='vieworders.html'" value="View Orders"></input>
-		
-		</div>
+		<input class="submit" type="submit" onclick="window.location.href='loginPage.php'" value="Login"></input>
+
+	
 	
 	</div>
 	<div class="main">
-		<!-- IF NOT LOGGED IN REDIRECT TO LOGIN-->
+		<h2>You have been Logged Out</h2>
 		
 	</div>
 </body>

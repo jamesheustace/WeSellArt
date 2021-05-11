@@ -1,3 +1,15 @@
+<?php 
+		session_start();
+		if (!isset($_SESSION['user'])) {
+			header("location: loginPage.php");
+		}
+		else if ($_SESSION['user']['admin'] == 0) {
+			header("location: index.php");
+		}		  
+		else {
+			$user = $_SESSION['user']['username'];
+		}
+		?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -85,29 +97,27 @@
 <body>
 	<div class="header">
 		<div class="title">
-		<a href="main.html" ><h1>WeSellArt.com</h1></a>
+		<a href="index.php" ><h1>WeSellArt.com</h1></a>
 		<h3>We here at WeSellArt.com are dedicated to selling you quality* art at unreasonable prices.</h3>
 		<h6>*We do not ensure the quality of any artwork.</h6>
 		</div>
 		<div class="useroptions">
 		
-		<!--IF NOT LOGGED IN:
-		<input class="submit" type="submit" value="Login"></input>-->
-		<!--IF LOGGED IN:-->
-		<h3>Hello, $username</h3>
+		
+		<h3>Hello, <?php echo $_SESSION['user']['username']?></h3>
 
-		<input class="submit" type="submit" onclick="window.location.href = 'cartview.html'" value="Cart"></input>
 		
-		<input class="submit" type="submit" onclick="window.location.href='logout.html'" value="Logout"></input>
+		<input class="submit" type="submit" onclick="window.location.href='logoutPage.php'" value="Logout"></input>
+		
+		<input class="submit" type="submit" onclick="window.location.href='account.php'" value="View Account"></input>
 		<br><br>
-		<input class="submit" type="submit" onclick="window.location.href='account.html'" value="View Account"></input>
-		
-		<input class="submit" type="submit" onclick="window.location.href='vieworders.html'" value="View Orders"></input>
+		<input class="submit" type="submit" onclick="window.location.href='vieworders.php'" value="View Orders"></input>
 		
 		</div>
 	
 	</div>
 	<div class="main">
+	<!--IF NOT LOGGED IN && NOT ADMIN REDIRECT-->
 		<div class="sidebar">
 			<h3 style="text-align:center;"> Search </h3>
 			<input type="text" style="width:80%; margin:auto; position: relative; right:2px; left:2px;"></input>
@@ -131,36 +141,36 @@
 			<table class="actualtable">
 				
 				<tr>
-					<td class="image"><img src="images/royaltyfreeart.jpg" alt="Picture of Art" width="100%"></td>
+					<td class="image"><img src="sources/royaltyfreeart.jpg" alt="Picture of Art" width="100%"></td>
 					<td class="artname">Artname</td>
 					<td class="artistname">Artist</td>
 					<td class="artdesc">description</td>
 					<td class="artprice">Price</td>
-					<td class="carttable"><input class="addtocart" type="submit" onclick="window.location.href = 'itemview.html'" value="View Item"></input><br><input class="addtocart" type="submit" value="Add to Cart"></input></td>
+					<td class="carttable"><input class="addtocart" type="submit" onclick="window.location.href = 'itemview.php'" value="View Item"></input><br><input class="addtocart" type="submit" value="Add to Cart"></input></td>
 				</tr>
 				<tr>
-					<td class="image"><img src="images/royaltyfreeart.jpg" alt="Picture of Art" width="100%"></td>
+					<td class="image"><img src="sources/royaltyfreeart.jpg" alt="Picture of Art" width="100%"></td>
 					<td class="artname">Artname</td>
 					<td class="artistname">Artist</td>
 					<td class="artdesc">description</td>
 					<td class="artprice">Price</td>
-					<td class="carttable"><input class="addtocart" type="submit" onclick="window.location.href = 'itemview.html'" value="View Item"></input><br><input class="addtocart" type="submit" value="Add to Cart"></input></td>
+					<td class="carttable"><input class="addtocart" type="submit" onclick="window.location.href = 'itemview.php'" value="View Item"></input><br><input class="addtocart" type="submit" value="Add to Cart"></input></td>
 				</tr>
 				<tr>
-					<td class="image"><img src="images/royaltyfreeart.jpg" alt="Picture of Art" width="100%"></td>
+					<td class="image"><img src="sources/royaltyfreeart.jpg" alt="Picture of Art" width="100%"></td>
 					<td class="artname">Artname</td>
 					<td class="artistname">Artist</td>
 					<td class="artdesc">description</td>
 					<td class="artprice">Price</td>
-					<td class="carttable"><input class="addtocart" type="submit" onclick="window.location.href = 'itemview.html'" value="View Item"></input><br><input class="addtocart" type="submit" value="Add to Cart"></input></td>
+					<td class="carttable"><input class="addtocart" type="submit" onclick="window.location.href = 'itemview.php'" value="View Item"></input><br><input class="addtocart" type="submit" value="Add to Cart"></input></td>
 				</tr>
 				<tr>
-					<td class="image"><img src="images/royaltyfreeart.jpg" alt="Picture of Art" width="100%"></td>
+					<td class="image"><img src="sources/royaltyfreeart.jpg" alt="Picture of Art" width="100%"></td>
 					<td class="artname">Artname</td>
 					<td class="artistname">Artist</td>
 					<td class="artdesc">description</td>
 					<td class="artprice">Price</td>
-					<td class="carttable"><input class="addtocart" type="submit" onclick="window.location.href = 'itemview.html'" value="View Item"></input><br><input class="addtocart" type="submit" value="Add to Cart"></input></td>
+					<td class="carttable"><input class="addtocart" type="submit" onclick="window.location.href = 'itemview.php'" value="View Item"></input><br><input class="addtocart" type="submit" value="Add to Cart"></input></td>
 				</tr>
 				
 				
